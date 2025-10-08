@@ -1,16 +1,18 @@
 name: python workflow
 on:
  push:
+env:
+ PYTHON_VERSION: 3.9
 jobs:
   job1:
    runs-on: ubuntu-latest
    steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Setup python 3.9
+    - name: Setup python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v5
       with:
-       python-version: '3.9'
+       python-version: ${{ env.PYTHON_VERSION }}
     - name: Install dependencies
       run: |
         pip install --upgrade pip
